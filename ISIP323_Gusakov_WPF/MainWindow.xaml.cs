@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,56 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ISIP323_Gusakov_WPF
 {
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new CatalogPage());
         }
-
-        private void Return_click(object sender, RoutedEventArgs e)
+        private void ShowCatalog(object  sender, RoutedEventArgs e)
         {
-            if (MainFrame.CanGoBack)
-            {
-                MainFrame.GoBack();
-                Reduce();
-            }
+            MainFrame.Navigate(new CatalogPage());
         }
-
-        private void OnNavigating(object sender, NavigatingCancelEventArgs e)
+        private void ShowCart(object sender, RoutedEventArgs e)
         {
-            if (Progress != null)
-            {
-                if (Progress.Value == 5)
-                {
-                    var result = MessageBox.Show("Есть несохранённые изменения. Покинуть страницу?", "Подтверждение",
-                      MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.No)
-                    {
-                        Add();
-                        e.Cancel = true;
-                    }
-                }
-            }
+            MainFrame.Navigate(new CartPage());
         }
-
-        public void Add()
+        private void ShowOrder(object sender, RoutedEventArgs e)
         {
-            Progress.Value += 1;
-        }
-        public void Reduce()
-        {
-            Progress.Value -= 1;
-        }
-
-        private void MainFrame_NavigationStopped(object sender, NavigationEventArgs e)
-        {
-            Add();
+            MainFrame.Navigate(new OrderPage());
         }
     }
 }
