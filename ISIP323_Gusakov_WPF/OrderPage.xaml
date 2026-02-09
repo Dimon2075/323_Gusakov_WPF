@@ -9,11 +9,11 @@
       Title="Оформление заказа">
     <ScrollViewer Margin="10">
         <StackPanel >
-            <TextBlock Text="ФИО" Margin="0,5"/>
+            <TextBlock Name="TxtName" Text="ФИО" Margin="0,5"/>
             <TextBox x:Name="NameTextBox" Width="300"/>
-            <TextBlock Text="Почта" Margin="0,5"/>
+            <TextBlock Name="TxtEmail" Text="Почта" Margin="0,5"/>
             <TextBox x:Name="EmailTextBox" Width="300"/>
-            <TextBlock Text="Адрес" Margin="0,5"/>
+            <TextBlock Name="TxtAddress" Text="Адрес" Margin="0,5"/>
             <TextBox x:Name="AddressTextBox" Width="300"/>
             <TextBlock Text="Ваш заказ:" Margin="0,10"/>
             <ItemsControl ItemsSource="{Binding CartItems}">
@@ -23,8 +23,8 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <TextBlock Text="{Binding TotalPrice,StringFormat='Общая цена: {0:C}'}" FontWeight="Bold" Margin="0,10"/>
-            <Button Content="Заказать" Width="150" HorizontalAlignment="Center"/>
+            <TextBlock Name="TotalSumTxt" FontWeight="Bold" Margin="0,10"/>
+            <Button Content="Заказать" Width="150" HorizontalAlignment="Center" Click="OrderBtn_Click"/>
         </StackPanel>
     </ScrollViewer>
 </Page>

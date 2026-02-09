@@ -63,11 +63,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cart.cs">
+      <DependentUpon>MagazModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CartItems.cs">
+      <DependentUpon>MagazModel1.tt</DependentUpon>
+    </Compile>
     <Compile Include="CartPage.xaml.cs">
       <DependentUpon>CartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="CatalogPage.xaml.cs">
       <DependentUpon>CatalogPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core.cs" />
+    <Compile Include="MagazModel1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MagazModel1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MagazModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MagazModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MagazModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MagazModel1.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -75,6 +97,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OrderDetails.cs">
+      <DependentUpon>MagazModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Orders.cs">
+      <DependentUpon>MagazModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products.cs">
+      <DependentUpon>MagazModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>MagazModel1.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +132,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="MagazModel1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MagazModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MagazModel1.edmx.diagram">
+      <DependentUpon>MagazModel1.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -127,6 +168,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MagazModel1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MagazModel1.edmx</DependentUpon>
+      <LastGenOutput>MagazModel1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MagazModel1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MagazModel1.edmx</DependentUpon>
+      <LastGenOutput>MagazModel1.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

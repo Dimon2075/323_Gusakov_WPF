@@ -7,11 +7,7 @@
         mc:Ignorable="d"
         Title="Онлайн магазин" Height="600" Width="800">
     <StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Каталог товара" Click="ShowCatalog"/>
-            <Button Content="Корзина" Click="ShowCart" Margin="10,0"/>
-            <Button Content="Оформление" Click="ShowOrder"/>
-        </StackPanel>
+        
         <Frame x:Name="MainFrame"/>
     </StackPanel>
 </Window>

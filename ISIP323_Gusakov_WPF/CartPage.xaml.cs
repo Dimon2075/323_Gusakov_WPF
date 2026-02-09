@@ -23,6 +23,29 @@ namespace ISIP323_Gusakov_WPF
         public CartPage()
         {
             InitializeComponent();
+            LViewCart.ItemsSource = Core.Cart;
+            UpdateTotal();
+        }
+        private void UpdateTotal()
+        {
+            decimal sum = Core.Cart.Sum(x => x.Price);
+            TotalTxt.Text = $"Итого {sum} рублей";
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+
+        private void CheckoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (Core.Cart.Count == 0)
+            {
+                MessageBox.Show("Корзина пуста");
+                return;
+            }
+
+            this.NavigationService.Navigate(new OrderPage());
         }
     }
 }
