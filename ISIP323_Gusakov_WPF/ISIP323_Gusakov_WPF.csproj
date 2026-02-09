@@ -170,6 +170,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images1\dell_monitor.jpg" />
+    <Resource Include="images1\iphone14.jpg" />
+    <Content Include="images1\laptop_lenovo.jfif" />
+    <Resource Include="images1\logitech_keyboard.jpg" />
+    <Resource Include="images1\sony_headphones.jpeg" />
     <Content Include="MagazModel1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MagazModel1.edmx</DependentUpon>
@@ -181,5 +186,6 @@
       <LastGenOutput>MagazModel1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

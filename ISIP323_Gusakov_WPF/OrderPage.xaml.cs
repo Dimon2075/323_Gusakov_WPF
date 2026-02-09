@@ -29,6 +29,24 @@ namespace ISIP323_Gusakov_WPF
         }
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(TxtName.Text))
+            {
+                MessageBox.Show("Пожалуйста, введи имя.");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(TxtEmail.Text))
+            {
+                MessageBox.Show("Пожалуйста, введи email.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(TxtAddress.Text))
+            {
+                MessageBox.Show("Пожалуйста, введите адрес.");
+                return;
+            }
+
+
             Orders newOrder = new Orders()
             {
                 CustomerName = TxtName.Text,
@@ -39,20 +57,11 @@ namespace ISIP323_Gusakov_WPF
 
             Core.Context.Orders.Add(newOrder);
 
-            foreach (var item in Core.Cart)
-            {
-                Cart newCartItem = new Cart()
-                {
-                    ProductId = item.Id,
-                    OrderId = newOrder.Id
-                };
-                Core.Context.Cart.Add(newCartItem);
-            }
+            Core.Context.SaveChanges();
 
 
-            MessageBox.Show($"Заказ №1 успешно оформлен!");
+            MessageBox.Show($"Заказ №{newOrder.Id} успешно оформлен!");
 
-            Core.Cart.Clear();
             this.NavigationService.Navigate(new CatalogPage());
         }
 
