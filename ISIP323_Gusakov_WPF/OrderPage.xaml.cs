@@ -38,7 +38,6 @@ namespace ISIP323_Gusakov_WPF
             };
 
             Core.Context.Orders.Add(newOrder);
-            
 
             foreach (var item in Core.Cart)
             {
@@ -49,9 +48,9 @@ namespace ISIP323_Gusakov_WPF
                 };
                 Core.Context.Cart.Add(newCartItem);
             }
-            
 
-            MessageBox.Show($"Заказ №{newOrder.Id} успешно оформлен!");
+
+            MessageBox.Show($"Заказ №1 успешно оформлен!");
 
             Core.Cart.Clear();
             this.NavigationService.Navigate(new CatalogPage());
