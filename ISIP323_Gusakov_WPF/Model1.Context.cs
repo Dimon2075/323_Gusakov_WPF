@@ -13,10 +13,10 @@ namespace ISIP323_Gusakov_WPF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MAGAZEntities2 : DbContext
+    public partial class Entities : DbContext
     {
-        public MAGAZEntities2()
-            : base("name=MAGAZEntities2")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -25,11 +25,14 @@ namespace ISIP323_Gusakov_WPF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CartItems> CartItems { get; set; }
-        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
-        public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Genres> Genres { get; set; }
+        public virtual DbSet<Halls> Halls { get; set; }
+        public virtual DbSet<HallTypes> HallTypes { get; set; }
+        public virtual DbSet<Movies> Movies { get; set; }
+        public virtual DbSet<Seats> Seats { get; set; }
+        public virtual DbSet<Sessions> Sessions { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Cart> Cart { get; set; }
+        public virtual DbSet<Tickets> Tickets { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

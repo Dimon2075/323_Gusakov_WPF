@@ -22,19 +22,6 @@ namespace ISIP323_Gusakov_WPF
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new CatalogPage());
-        }
-        private void ShowCatalog(object  sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new CatalogPage());
-        }
-        private void ShowCart(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new CartPage());
-        }
-        private void ShowOrder(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new OrderPage());
         }
     }
 }

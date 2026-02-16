@@ -12,26 +12,23 @@ namespace ISIP323_Gusakov_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Products
+    public partial class Halls
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Products()
+        public Halls()
         {
-            this.CartItems = new HashSet<CartItems>();
-            this.OrderDetails = new HashSet<OrderDetails>();
-            this.Cart = new HashSet<Cart>();
+            this.Seats = new HashSet<Seats>();
+            this.Sessions = new HashSet<Sessions>();
         }
     
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
-        public string ImagePath { get; set; }
+        public int HallTypeID { get; set; }
     
+        public virtual HallTypes HallTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CartItems> CartItems { get; set; }
+        public virtual ICollection<Seats> Seats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Cart { get; set; }
+        public virtual ICollection<Sessions> Sessions { get; set; }
     }
 }

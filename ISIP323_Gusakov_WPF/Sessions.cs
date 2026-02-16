@@ -12,24 +12,23 @@ namespace ISIP323_Gusakov_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Orders
+    public partial class Sessions
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Orders()
+        public Sessions()
         {
-            this.OrderDetails = new HashSet<OrderDetails>();
-            this.Cart = new HashSet<Cart>();
+            this.Tickets = new HashSet<Tickets>();
         }
     
-        public int Id { get; set; }
-        public string CustomerName { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public Nullable<System.DateTime> OrderDate { get; set; }
+        public int ID { get; set; }
+        public int MovieID { get; set; }
+        public int HallID { get; set; }
+        public System.DateTime DateTime { get; set; }
+        public decimal Price { get; set; }
     
+        public virtual Halls Halls { get; set; }
+        public virtual Movies Movies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Cart { get; set; }
+        public virtual ICollection<Tickets> Tickets { get; set; }
     }
 }

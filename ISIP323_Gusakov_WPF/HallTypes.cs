@@ -12,13 +12,19 @@ namespace ISIP323_Gusakov_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Cart
+    public partial class HallTypes
     {
-        public int Id { get; set; }
-        public int ProductId { get; set; }
-        public int OrderId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HallTypes()
+        {
+            this.Halls = new HashSet<Halls>();
+        }
     
-        public virtual Orders Orders { get; set; }
-        public virtual Products Products { get; set; }
+        public int ID { get; set; }
+        public string TypeName { get; set; }
+        public decimal BaseRating { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Halls> Halls { get; set; }
     }
 }
