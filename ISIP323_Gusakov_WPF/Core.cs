@@ -8,14 +8,14 @@ namespace ISIP323_Gusakov_WPF
 {
     public class Core
     {
-        private static Entities _context;
-        public static Entities DBContext
+        private static Entities1 _context;
+        public static Entities1 DBContext
         {
             get
             {
                 if (_context == null)
                 {
-                    _context = new Entities();
+                    _context = new Entities1();
                 }
                 return _context;
             }

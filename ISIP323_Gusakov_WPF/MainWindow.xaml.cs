@@ -22,6 +22,7 @@ namespace ISIP323_Gusakov_WPF
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new Pages.MainPage());
         }
     }
 }

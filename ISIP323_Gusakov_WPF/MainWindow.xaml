@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISIP323_Gusakov_WPF"
         mc:Ignorable="d"
-        Title="Онлайн магазин" Height="800" Width="900">
-    <StackPanel>
-        <Frame x:Name="MainFrame"/>
-    </StackPanel>
+        Title="ПР14" Height="600" Width="800">
+    <Grid Background="#6b6b6b">
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
 </Window>

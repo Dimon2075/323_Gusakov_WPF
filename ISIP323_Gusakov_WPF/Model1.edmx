@@ -28,19 +28,26 @@
           <Property Name="TypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="BaseRating" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="MovieGenres">
+          <Key>
+            <PropertyRef Name="GenreID" />
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="GenreID" Type="int" Nullable="false" />
+          <Property Name="MovieID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Movies">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Rating" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="StartDate" Type="datetime" Nullable="false" />
           <Property Name="AgeRating" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ImagePath" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Duration" Type="int" Nullable="false" />
-          <Property Name="GenreID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Seats">
           <Key>
@@ -103,15 +110,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Movies_Genres">
+        <Association Name="FK_MovieGenres_Genres">
           <End Role="Genres" Type="Self.Genres" Multiplicity="1" />
-          <End Role="Movies" Type="Self.Movies" Multiplicity="*" />
+          <End Role="MovieGenres" Type="Self.MovieGenres" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Genres">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Movies">
+            <Dependent Role="MovieGenres">
               <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovieGenres_Movies">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
+          <End Role="MovieGenres" Type="Self.MovieGenres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MovieGenres">
+              <PropertyRef Name="MovieID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -191,6 +210,7 @@
           <EntitySet Name="Genres" EntityType="Self.Genres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Halls" EntityType="Self.Halls" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HallTypes" EntityType="Self.HallTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MovieGenres" EntityType="Self.MovieGenres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seats" EntityType="Self.Seats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
@@ -201,9 +221,13 @@
             <End Role="HallTypes" EntitySet="HallTypes" />
             <End Role="Halls" EntitySet="Halls" />
           </AssociationSet>
-          <AssociationSet Name="FK_Movies_Genres" Association="Self.FK_Movies_Genres">
+          <AssociationSet Name="FK_MovieGenres_Genres" Association="Self.FK_MovieGenres_Genres">
             <End Role="Genres" EntitySet="Genres" />
+            <End Role="MovieGenres" EntitySet="MovieGenres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovieGenres_Movies" Association="Self.FK_MovieGenres_Movies">
             <End Role="Movies" EntitySet="Movies" />
+            <End Role="MovieGenres" EntitySet="MovieGenres" />
           </AssociationSet>
           <AssociationSet Name="FK_Seats_Halls" Association="Self.FK_Seats_Halls">
             <End Role="Halls" EntitySet="Halls" />
@@ -241,7 +265,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Movies" Relationship="Self.FK_Movies_Genres" FromRole="Genres" ToRole="Movies" />
+          <NavigationProperty Name="Movies" Relationship="Self.MovieGenres" FromRole="Genres" ToRole="Movies" />
         </EntityType>
         <EntityType Name="Halls">
           <Key>
@@ -269,15 +293,14 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Rating" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AgeRating" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ImagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Duration" Type="Int32" Nullable="false" />
-          <Property Name="GenreID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Genres" Relationship="Self.FK_Movies_Genres" FromRole="Movies" ToRole="Genres" />
           <NavigationProperty Name="Sessions" Relationship="Self.FK_Sessions_Movies" FromRole="Movies" ToRole="Sessions" />
+          <NavigationProperty Name="Genres" Relationship="Self.MovieGenres" FromRole="Movies" ToRole="Genres" />
         </EntityType>
         <EntityType Name="Seats">
           <Key>
@@ -337,18 +360,6 @@
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Users" FromRole="Users" ToRole="Tickets" />
         </EntityType>
-        <Association Name="FK_Movies_Genres">
-          <End Role="Genres" Type="Self.Genres" Multiplicity="1" />
-          <End Role="Movies" Type="Self.Movies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Genres">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Movies">
-              <PropertyRef Name="GenreID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Halls_HallTypes">
           <End Role="HallTypes" Type="Self.HallTypes" Multiplicity="1" />
           <End Role="Halls" Type="Self.Halls" Multiplicity="*" />
@@ -433,7 +444,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <Association Name="MovieGenres">
+          <End Role="Genres" Type="Self.Genres" Multiplicity="*" />
+          <End Role="Movies" Type="Self.Movies" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Genres" EntityType="Self.Genres" />
           <EntitySet Name="Halls" EntityType="Self.Halls" />
           <EntitySet Name="HallTypes" EntityType="Self.HallTypes" />
@@ -443,10 +458,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tickets" EntityType="Self.Tickets" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK_Movies_Genres" Association="Self.FK_Movies_Genres">
-            <End Role="Genres" EntitySet="Genres" />
-            <End Role="Movies" EntitySet="Movies" />
-          </AssociationSet>
           <AssociationSet Name="FK_Halls_HallTypes" Association="Self.FK_Halls_HallTypes">
             <End Role="HallTypes" EntitySet="HallTypes" />
             <End Role="Halls" EntitySet="Halls" />
@@ -475,13 +486,17 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Tickets" EntitySet="Tickets" />
           </AssociationSet>
+          <AssociationSet Name="MovieGenres" Association="Self.MovieGenres">
+            <End Role="Genres" EntitySet="Genres" />
+            <End Role="Movies" EntitySet="Movies" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PRModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PRModelContainer" CdmEntityContainer="Entities1">
           <EntitySetMapping Name="Genres">
             <EntityTypeMapping TypeName="PRModel.Genres">
               <MappingFragment StoreEntitySet="Genres">
@@ -519,7 +534,6 @@
                 <ScalarProperty Name="AgeRating" ColumnName="AgeRating" />
                 <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
-                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -577,6 +591,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="MovieGenres" TypeName="PRModel.MovieGenres" StoreEntitySet="MovieGenres">
+            <EndProperty Name="Genres">
+              <ScalarProperty Name="ID" ColumnName="GenreID" />
+            </EndProperty>
+            <EndProperty Name="Movies">
+              <ScalarProperty Name="ID" ColumnName="MovieID" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

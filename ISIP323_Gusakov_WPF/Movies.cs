@@ -18,6 +18,7 @@ namespace ISIP323_Gusakov_WPF
         public Movies()
         {
             this.Sessions = new HashSet<Sessions>();
+            this.Genres = new HashSet<Genres>();
         }
     
         public int ID { get; set; }
@@ -28,10 +29,10 @@ namespace ISIP323_Gusakov_WPF
         public string AgeRating { get; set; }
         public string ImagePath { get; set; }
         public int Duration { get; set; }
-        public int GenreID { get; set; }
     
-        public virtual Genres Genres { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sessions> Sessions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Genres> Genres { get; set; }
     }
 }
