@@ -22,6 +22,16 @@ namespace ISIP323_Gusakov_WPF
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new Pages.BuilderPage());
+        }
+        private void BtnBuilder_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.BuilderPage());
+        }
+
+        private void BntSaved_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.SavePage());
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 
 namespace ISIP323_Gusakov_WPF.Pages
 {
@@ -20,9 +21,14 @@ namespace ISIP323_Gusakov_WPF.Pages
     /// </summary>
     public partial class BuilderPage : Page
     {
+        private ObservableCollection<basepart> _buildParts = new ObservableCollection<basepart>();
+
         public BuilderPage()
         {
             InitializeComponent();
+            LvCart.ItemsSource = _buildParts;
+            LoadData();
         }
+
     }
 }
