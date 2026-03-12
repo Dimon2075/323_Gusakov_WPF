@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ISIP323_Gusakov_WPF.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1250"
       Title="BuilderPage">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*" MinWidth="300"/>
         </Grid.ColumnDefinitions>
-
+        
         <Grid Grid.Column="0" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -21,15 +21,15 @@
 
             <WrapPanel Grid.Row="0" Margin="0,0,0,10">
                 <StackPanel Orientation="Horizontal" Margin="0,0,15,5">
-                    <TextBlock Text="Поиск:" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="Orange" FontWeight="Bold"/>
+                    <TextBlock Text="Поиск:" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="MediumPurple" FontWeight="Bold"/>
                     <TextBox x:Name="TbxSearch" Width="200" TextChanged="TbxSearch_TextChanged" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,15,5">
-                    <TextBlock Text="Производитель:" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="Orange" FontWeight="Bold"/>
+                    <TextBlock Text="Производитель:" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="MediumPurple" FontWeight="Bold"/>
                     <ComboBox x:Name="CmbManufacturer" Width="150" SelectionChanged="CmbManufacturer_SelectionChanged"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,15,5">
-                    <TextBlock Text="Тип детали:" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="Orange" FontWeight="Bold"/>
+                    <TextBlock Text="Тип детали:" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="MediumPurple" FontWeight="Bold"/>
                     <ComboBox x:Name="CbCategory" Width="200"  SelectionChanged="CbCategory_SelectionChanged"/>
                 </StackPanel>
             </WrapPanel>
@@ -41,7 +41,7 @@
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="#DDDDDD" BorderThickness="1" Background="White" Padding="10" Margin="0,2" CornerRadius="5">
+                        <Border BorderBrush="MediumPurple" BorderThickness="1" Background="White" Padding="10" Margin="0,2" CornerRadius="10">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -58,7 +58,7 @@
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                    <TextBlock Text="{Binding price, StringFormat={}{0:N0} ₽}" FontWeight="Bold" FontSize="16" Foreground="Orange" HorizontalAlignment="Right"/>
+                                    <TextBlock Text="{Binding price, StringFormat={}{0:N0} ₽}" FontWeight="Bold" FontSize="16" Foreground="MediumPurple" HorizontalAlignment="Right"/>
                                     <Button Content="Добавить" Click="BtnAdd_Click" Padding="10,5" Margin="0,5,0,0" Background="White" Foreground="Black" BorderThickness="1" FontWeight="Bold" BorderBrush="Gray"/>
                                 </StackPanel>
                             </Grid>
@@ -91,7 +91,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="{Binding name}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                <Button Grid.Column="1" Content="❌" Click="BtnRemove_Click" Background="Transparent" BorderThickness="0" Foreground="Red" FontSize="14"/>
+                                <Button Grid.Column="1" Content="Не хачу" Click="BtnRemove_Click" Background="Transparent" BorderThickness="0" Foreground="Red" FontSize="14"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -100,13 +100,13 @@
                 <StackPanel Grid.Row="2" Margin="0,15,0,0">
                     <Separator Margin="0,0,0,10"/>
                     <TextBlock Text="Итого:" Foreground="Gray"/>
-                    <TextBlock x:Name="TbTotalPrice" Text="0 ₽" FontSize="22" FontWeight="Bold" Foreground="Orange" Margin="0,0,0,15"/>
+                    <TextBlock x:Name="TbTotalPrice" Text="0 ₽" FontSize="22" FontWeight="Bold" Foreground="MediumPurple" Margin="0,0,0,15"/>
                     <TextBlock Text="Название сборки:" Foreground="Gray" Margin="0,5"/>
                     <TextBox x:Name="TbAssemblyName" Width="200" Margin="0,0,0,5"/>
 
                     <TextBlock Text="Ваше имя (автор):" Foreground="Gray" Margin="0,5"/>
                     <TextBox x:Name="TbAuthorName" Width="200" Margin="0,0,0,10"/>
-                    <Button Content="Сохранить сборку" Padding="10" Background="Orange" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="BtnSaveAssembly_Click"/>
+                    <Button Content="Сохранить сборку" Padding="10" Background="MediumPurple" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="BtnSaveAssembly_Click"/>
                 </StackPanel>
             </Grid>
         </Border>

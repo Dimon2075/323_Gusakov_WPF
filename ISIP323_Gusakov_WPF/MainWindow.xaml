@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISIP323_Gusakov_WPF"
         mc:Ignorable="d"
-        Title="ПР15" Height="600" Width="800">
+        Title="ПР15" Height="650" Width="1250">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,8 +14,8 @@
 
         <Border Grid.Row="0"  Padding="10">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Cборка ПК" Click="BtnBuilder_Click" Padding="5" Background="Orange" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,0,10,0"/>
-                <Button Content="Сохраненые сборки" Click="BntSaved_Click" Padding="5" Background="Orange" Foreground="White" FontSize="14" FontWeight="Bold"/>
+                <Button Content="Cборка ПК" Click="BtnBuilder_Click" Padding="5" Background="MediumPurple" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,0,10,0"/>
+                <Button Content="Сохраненые сборки" Click="BntSaved_Click" Padding="5" Background="MediumPurple" Foreground="White" FontSize="14" FontWeight="Bold"/>
             </StackPanel>
         </Border>
         <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>

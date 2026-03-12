@@ -24,6 +24,49 @@ namespace ISIP323_Gusakov_WPF.Pages
         public SavePage()
         {
             InitializeComponent();
+            LoadSaveBuilds();
+        }
+        private void LoadSaveBuilds()
+        {
+            using (var db = new Entities4())
+            {
+                SaveBuilds.ItemsSource = db.assembly.ToList();
+            }
+        }
+        private void SaveBuilds_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SaveBuilds.SelectedItem is assembly selected)
+            {
+                TbAuthor.Text = $"Автор сборки: {selected.author}";
+
+                using (var db = new Entities4())
+                {
+                    db.Configuration.LazyLoadingEnabled = false;
+                    db.Configuration.ProxyCreationEnabled = false;
+                    var links = db.partassembly
+                                  .Where(pa => pa.assemblyid == selected.id)
+                                  .Include(pa => pa.basepart)
+                                  .ToList();
+
+                    var finalParts = new List<basepart>();
+                    foreach (var link in links)
+                    {
+                        var part = link.basepart;
+
+
+                        db.Entry(part).Reference(p => p.cpu).Load();
+                        db.Entry(part).Reference(p => p.gpu).Load();
+                        db.Entry(part).Reference(p => p.motherboard).Load();
+                        db.Entry(part).Reference(p => p.ram).Load();
+                        db.Entry(part).Reference(p => p.powersupply).Load();
+                        db.Entry(part).Reference(p => p.storagedevice).Load();
+                        db.Entry(part).Reference(p => p.processorcooler).Load();
+
+                        finalParts.Add(part);
+                    }
+                    SaveBuildsParts.ItemsSource = finalParts;
+                }
+            }
         }
     }
 }
