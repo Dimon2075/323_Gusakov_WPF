@@ -12,23 +12,24 @@ namespace ISIP323_Gusakov_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Sessions
+    public partial class processorcooler_
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sessions()
+        public processorcooler_()
         {
-            this.Tickets = new HashSet<Tickets>();
+            this.socketprocessorcooler_ = new HashSet<socketprocessorcooler_>();
         }
     
-        public int ID { get; set; }
-        public int MovieID { get; set; }
-        public int HallID { get; set; }
-        public System.DateTime DateTime { get; set; }
-        public decimal Price { get; set; }
+        public int id { get; set; }
+        public int fandimensionid { get; set; }
+        public int heatpipes { get; set; }
+        public int minspeed { get; set; }
+        public int maxspeed { get; set; }
+        public double noiselevel { get; set; }
     
-        public virtual Halls Halls { get; set; }
-        public virtual Movies Movies { get; set; }
+        public virtual basepart_ basepart_ { get; set; }
+        public virtual fandimension_ fandimension_ { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tickets> Tickets { get; set; }
+        public virtual ICollection<socketprocessorcooler_> socketprocessorcooler_ { get; set; }
     }
 }

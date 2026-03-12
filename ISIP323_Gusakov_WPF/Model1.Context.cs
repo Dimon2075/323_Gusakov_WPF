@@ -13,10 +13,10 @@ namespace ISIP323_Gusakov_WPF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities1 : DbContext
+    public partial class Entities2 : DbContext
     {
-        public Entities1()
-            : base("name=Entities1")
+        public Entities2()
+            : base("name=Entities2")
         {
         }
     
@@ -25,14 +25,35 @@ namespace ISIP323_Gusakov_WPF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Genres> Genres { get; set; }
-        public virtual DbSet<Halls> Halls { get; set; }
-        public virtual DbSet<HallTypes> HallTypes { get; set; }
-        public virtual DbSet<Movies> Movies { get; set; }
-        public virtual DbSet<Seats> Seats { get; set; }
-        public virtual DbSet<Sessions> Sessions { get; set; }
+        public virtual DbSet<assembly_> assembly_ { get; set; }
+        public virtual DbSet<basepart_> basepart_ { get; set; }
+        public virtual DbSet<boardformfactorcase_> boardformfactorcase_ { get; set; }
+        public virtual DbSet<case_> case_ { get; set; }
+        public virtual DbSet<casesize_> casesize_ { get; set; }
+        public virtual DbSet<certificate_> certificate_ { get; set; }
+        public virtual DbSet<cpu_> cpu_ { get; set; }
+        public virtual DbSet<fandimension_> fandimension_ { get; set; }
+        public virtual DbSet<formfactor_> formfactor_ { get; set; }
+        public virtual DbSet<gpu_> gpu_ { get; set; }
+        public virtual DbSet<gpuinterface_> gpuinterface_ { get; set; }
+        public virtual DbSet<hdd_> hdd_ { get; set; }
+        public virtual DbSet<igpu_> igpu_ { get; set; }
+        public virtual DbSet<manufacturer_> manufacturer_ { get; set; }
+        public virtual DbSet<memorytype_> memorytype_ { get; set; }
+        public virtual DbSet<motherboard_> motherboard_ { get; set; }
+        public virtual DbSet<partassembly_> partassembly_ { get; set; }
+        public virtual DbSet<parttype_> parttype_ { get; set; }
+        public virtual DbSet<powersupply_> powersupply_ { get; set; }
+        public virtual DbSet<processorcooler_> processorcooler_ { get; set; }
+        public virtual DbSet<ram_> ram_ { get; set; }
+        public virtual DbSet<socket_> socket_ { get; set; }
+        public virtual DbSet<socketprocessorcooler_> socketprocessorcooler_ { get; set; }
+        public virtual DbSet<ssd_> ssd_ { get; set; }
+        public virtual DbSet<storagedevice_> storagedevice_ { get; set; }
+        public virtual DbSet<storagedeviceinterface_> storagedeviceinterface_ { get; set; }
+        public virtual DbSet<storagedevicetype_> storagedevicetype_ { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Tickets> Tickets { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<videoconnector_> videoconnector_ { get; set; }
+        public virtual DbSet<videoconnectorgpu_> videoconnectorgpu_ { get; set; }
     }
 }

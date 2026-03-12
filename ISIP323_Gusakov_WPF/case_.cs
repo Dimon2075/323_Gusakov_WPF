@@ -12,23 +12,22 @@ namespace ISIP323_Gusakov_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Halls
+    public partial class case_
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Halls()
+        public case_()
         {
-            this.Seats = new HashSet<Seats>();
-            this.Sessions = new HashSet<Sessions>();
+            this.boardformfactorcase_ = new HashSet<boardformfactorcase_>();
         }
     
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public int HallTypeID { get; set; }
+        public int id { get; set; }
+        public int sizeid { get; set; }
+        public int expansionslots { get; set; }
+        public int fans { get; set; }
     
-        public virtual HallTypes HallTypes { get; set; }
+        public virtual basepart_ basepart_ { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Seats> Seats { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sessions> Sessions { get; set; }
+        public virtual ICollection<boardformfactorcase_> boardformfactorcase_ { get; set; }
+        public virtual casesize_ casesize_ { get; set; }
     }
 }

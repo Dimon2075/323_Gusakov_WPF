@@ -12,27 +12,21 @@ namespace ISIP323_Gusakov_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Movies
+    public partial class formfactor_
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Movies()
+        public formfactor_()
         {
-            this.Sessions = new HashSet<Sessions>();
-            this.Genres = new HashSet<Genres>();
+            this.boardformfactorcase_ = new HashSet<boardformfactorcase_>();
+            this.motherboard_ = new HashSet<motherboard_>();
         }
     
-        public int ID { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public decimal Rating { get; set; }
-        public System.DateTime StartDate { get; set; }
-        public string AgeRating { get; set; }
-        public string ImagePath { get; set; }
-        public int Duration { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sessions> Sessions { get; set; }
+        public virtual ICollection<boardformfactorcase_> boardformfactorcase_ { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Genres> Genres { get; set; }
+        public virtual ICollection<motherboard_> motherboard_ { get; set; }
     }
 }

@@ -12,21 +12,15 @@ namespace ISIP323_Gusakov_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class powersupply_
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
-        {
-            this.Tickets = new HashSet<Tickets>();
-        }
+        public int id { get; set; }
+        public int power { get; set; }
+        public int fandimensionid { get; set; }
+        public int certificationid { get; set; }
     
-        public int ID { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tickets> Tickets { get; set; }
+        public virtual basepart_ basepart_ { get; set; }
+        public virtual certificate_ certificate_ { get; set; }
+        public virtual fandimension_ fandimension_ { get; set; }
     }
 }

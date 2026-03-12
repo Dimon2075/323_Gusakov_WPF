@@ -12,16 +12,18 @@ namespace ISIP323_Gusakov_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Tickets
+    public partial class gpuinterface_
     {
-        public int ID { get; set; }
-        public int SessionID { get; set; }
-        public int UserID { get; set; }
-        public int SeatID { get; set; }
-        public System.DateTime PurchaseDate { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public gpuinterface_()
+        {
+            this.gpu_ = new HashSet<gpu_>();
+        }
     
-        public virtual Seats Seats { get; set; }
-        public virtual Sessions Sessions { get; set; }
-        public virtual Users Users { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<gpu_> gpu_ { get; set; }
     }
 }

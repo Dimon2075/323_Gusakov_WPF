@@ -12,21 +12,19 @@ namespace ISIP323_Gusakov_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Seats
+    public partial class assembly_
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Seats()
+        public assembly_()
         {
-            this.Tickets = new HashSet<Tickets>();
+            this.partassembly_ = new HashSet<partassembly_>();
         }
     
-        public int ID { get; set; }
-        public int HallID { get; set; }
-        public int RowNumber { get; set; }
-        public int SeatNumber { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string author { get; set; }
     
-        public virtual Halls Halls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tickets> Tickets { get; set; }
+        public virtual ICollection<partassembly_> partassembly_ { get; set; }
     }
 }

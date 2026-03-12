@@ -12,19 +12,11 @@ namespace ISIP323_Gusakov_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class HallTypes
+    public partial class ssd_
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HallTypes()
-        {
-            this.Halls = new HashSet<Halls>();
-        }
+        public int id { get; set; }
+        public int tbw { get; set; }
     
-        public int ID { get; set; }
-        public string TypeName { get; set; }
-        public decimal BaseRating { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Halls> Halls { get; set; }
+        public virtual storagedevice_ storagedevice_ { get; set; }
     }
 }

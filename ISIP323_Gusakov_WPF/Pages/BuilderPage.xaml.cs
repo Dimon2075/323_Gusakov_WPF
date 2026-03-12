@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ISIP323_Gusakov_WPF
+namespace ISIP323_Gusakov_WPF.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для BuilderPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BuilderPage : Page
     {
-        public MainWindow()
+        public BuilderPage()
         {
             InitializeComponent();
         }
