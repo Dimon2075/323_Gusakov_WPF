@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf02f08bdd17461aaa9b4056964254bb" Name="Diagram1">
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.Appointments" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.Manufacturers" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.OrderItems" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.Orders" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.Products" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.ProductTypes" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.Roles" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.Services" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.ServiceTypes" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MAGAZ_CosmosModel.Users" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="MAGAZ_CosmosModel.FK_Appointments_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="MAGAZ_CosmosModel.FK_Appointments_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="MAGAZ_CosmosModel.FK_Appointments_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="MAGAZ_CosmosModel.FK_Products_Manufacturers" ManuallyRouted="false" />
+        <AssociationConnector Association="MAGAZ_CosmosModel.FK_OrderItems_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="MAGAZ_CosmosModel.FK_OrderItems_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="MAGAZ_CosmosModel.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="MAGAZ_CosmosModel.FK_Products_ProductTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="MAGAZ_CosmosModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="MAGAZ_CosmosModel.FK_Services_ServiceTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
