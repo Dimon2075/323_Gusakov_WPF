@@ -50,6 +50,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
+                <Button x:Name="BtnHelp" Background="#42AAFF" BorderThickness="0" Content="Справка" Foreground="#ffd700" Margin="5" Padding="5" FontSize="20" Click="BtnHelp_Click" />
             </StackPanel>
         </Grid>
 

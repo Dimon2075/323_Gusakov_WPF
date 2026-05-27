@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -67,6 +68,10 @@ namespace ISIP323_Gusakov_WPF
                         break;
                 }
             }
+        }
+        private void BtnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("D:cods/ISIP323_Gusakov_WPF/ISIP323_Gusakov_WPF/Help/Help.chm");
         }
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
