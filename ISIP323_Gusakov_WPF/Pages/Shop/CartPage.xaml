@@ -1,0 +1,77 @@
+﻿<Page x:Class="ISIP323_Gusakov_WPF.Pages.Shop.CartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ISIP323_Gusakov_WPF.Pages.Shop"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Корзина">
+
+    <Grid Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="LBoxCart" Grid.Column="0" Margin="10" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#580EAD" CornerRadius="8" Margin="0,0,0,10" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="1" Margin="15,0" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Product.Name}" FontSize="16" FontWeight="Bold" Foreground="White"/>
+                                <TextBlock Text="{Binding Product.Manufacturers.Name}" Foreground="White"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                                <Button Content="-" Click="BtnMinus_Click" Tag="{Binding Product}" Width="30" Height="30" Background="#E74C3C" Foreground="White" BorderThickness="0" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Quantity}" Width="30" TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="White" FontWeight="Bold" Margin="5,0"/>
+                                <Button Content="+" Click="BtnPlus_Click" Tag="{Binding Product}" Width="30" Height="30" Background="#27AE60" Foreground="White" BorderThickness="0" FontWeight="Bold"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="3" VerticalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock Text="{Binding TotalPrice, StringFormat={}{0:N0} ₽}" FontSize="16" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                                <Button Content="✕" Click="BtnRemove_Click" Tag="{Binding Product}" Margin="15,0,0,0" 
+                                        Background="Transparent" Foreground="#E74C3C" BorderThickness="0" FontWeight="Bold" FontSize="18"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Border Grid.Column="1" Background="#580EAD" Margin="10" CornerRadius="10" Padding="20" VerticalAlignment="Top">
+            <StackPanel>
+                <TextBlock Text="Ваш заказ" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" Foreground="White"/>
+
+                <DockPanel Margin="0,5">
+                    <TextBlock Text="Товары:" Foreground="White"/>
+                    <TextBlock x:Name="TxtTotalCount" DockPanel.Dock="Right" HorizontalAlignment="Right" FontWeight="SemiBold" Foreground="White"/>
+                </DockPanel>
+
+                <DockPanel Margin="0,5">
+                    <TextBlock Text="Сумма скидки:" Foreground="White"/>
+                    <TextBlock x:Name="TxtTotalDiscount" DockPanel.Dock="Right" HorizontalAlignment="Right" Foreground="White" FontWeight="SemiBold"/>
+                </DockPanel>
+
+                <Separator Margin="0,15"/>
+
+                <DockPanel>
+                    <TextBlock Text="Итого:" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock x:Name="TxtFinalPrice" DockPanel.Dock="Right" HorizontalAlignment="Right" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                </DockPanel>
+
+                <Button Content="Оформить заказ" Margin="0,30,0,0" Height="45" Background="#E67E22" 
+                        Foreground="White" FontWeight="Bold" BorderThickness="0" Click="BtnOrder_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

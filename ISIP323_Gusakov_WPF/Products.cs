@@ -22,12 +22,12 @@ namespace ISIP323_Gusakov_WPF
     
         public int ID { get; set; }
         public int ProductTypeID { get; set; }
-        public int ManufaturerID { get; set; }
+        public int ManufacturerID { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public Nullable<int> DiscountPercentage { get; set; }
-        public Nullable<decimal> Rating { get; set; }
-        public bool IzFrozen { get; set; }
+        public decimal DiscountPercentage { get; set; }
+        public decimal Rating { get; set; }
+        public bool? IzFrozen { get; set; }
     
         public virtual Manufacturers Manufacturers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

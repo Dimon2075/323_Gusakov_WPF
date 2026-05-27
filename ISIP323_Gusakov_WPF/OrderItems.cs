@@ -14,7 +14,6 @@ namespace ISIP323_Gusakov_WPF
     
     public partial class OrderItems
     {
-        public int ID { get; set; }
         public int OrderID { get; set; }
         public int ProductID { get; set; }
         public int Quantity { get; set; }

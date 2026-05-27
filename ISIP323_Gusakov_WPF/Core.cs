@@ -8,13 +8,13 @@ namespace ISIP323_Gusakov_WPF
 {
     public class Core
     {
-        private static MAGAZ_CosmosEntities _db;
-        public static MAGAZ_CosmosEntities DB => GetContext();
-        public static MAGAZ_CosmosEntities GetContext()
+        private static MAGAZ_CosmosEntities1 _db;
+        public static MAGAZ_CosmosEntities1 DB => GetContext();
+        public static MAGAZ_CosmosEntities1 GetContext()
         {
             if( _db == null )
             {
-                _db = new MAGAZ_CosmosEntities();
+                _db = new MAGAZ_CosmosEntities1();
             }
             return _db;
         }

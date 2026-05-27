@@ -5,8 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISIP323_Gusakov_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="650" Width="1150">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="#580EAD">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Космическая Ложа" Foreground="White" FontSize="18" 
+                           FontWeight="Bold" HorizontalAlignment="Center" Margin="10,20"/>
+                <Separator Background="#580EAD" Margin="10,0,10,10"/>
+
+                <Button Content="Главная" Tag="Start" Click="Navigating" Height="40" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="Магазин" Tag="Shop" Click="Navigating" Height="40" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button Content="Корзина" x:Name="BtnCart" Tag="Cart" Click="Navigating" Height="40" Background="Transparent" Foreground="White" BorderThickness="0" />
+
+                <Button x:Name="BtnMyRecords" Content="Мой кабинет" Tag="Account" Click="Navigating" Visibility="Collapsed" Height="40" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button x:Name="BtnMasterRecords" Content="Мои смены" Tag="Master" Click="Navigating" Visibility="Collapsed" Height="40" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button x:Name="BtnManagerPanel" Content="Управление салоном" Tag="Manager" Click="Navigating" Visibility="Collapsed" Height="40" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                <Button x:Name="BtnAdminPanel" Content="Пользователи" Tag="Admin" Click="Navigating" Visibility="Collapsed" Height="40" Background="Transparent" Foreground="White" BorderThickness="0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Margin="10,0,10,20">
+                <Separator Background="#580EAD" Margin="0,0,0,10"/>
+                <TextBlock x:Name="TxtCurrentUser" Text="Вы вошли как: Гость" Foreground="White" 
+                           FontSize="12" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="Ваши права доступа: " Foreground="White"/>
+                <Border Background="#E67E22" CornerRadius="5" Padding="5,2" Margin="5,10">
+                    <TextBlock x:Name="TxtUserRole" Foreground="White" FontSize="12" VerticalAlignment="Center"/>
+                </Border>
+
+                <Button x:Name="BtnLogin" Content="Войти в аккаунт" Click="BtnLogin_Click" 
+                        Height="40" Background="#E67E22" Foreground="White" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Background="White" BorderBrush="#DEE2E6" BorderThickness="0,0,0,1">
+                <Grid>
+                    <Button Content="← Назад" Click="GoBack_Click" Margin="10,0" Width="80" Height="30" 
+                            HorizontalAlignment="Left" x:Name="BtnBack" Visibility="Hidden"
+                            Background="#F8F9FA" BorderBrush="#DEE2E6"/>
+                    <TextBlock x:Name="TxtPageTitle" Text="Главная страница" VerticalAlignment="Center" 
+                               HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" Foreground="#2C3E50"/>
+                </Grid>
+            </Border>
+
+            <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated"/>
+        </Grid>
     </Grid>
 </Window>

@@ -18,6 +18,7 @@ namespace ISIP323_Gusakov_WPF
         public int ClientID { get; set; }
         public int MasterID { get; set; }
         public int ServiceID { get; set; }
+        public System.DateTime AppointmentDateTime { get; set; }
         public string PaymentMethod { get; set; }
         public string Comment { get; set; }
         public string Status { get; set; }

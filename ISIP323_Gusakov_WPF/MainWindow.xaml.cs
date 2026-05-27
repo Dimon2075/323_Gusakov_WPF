@@ -12,6 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ISIP323_Gusakov_WPF.Pages.Salon;
+using ISIP323_Gusakov_WPF.Pages.Admin;
+using ISIP323_Gusakov_WPF.Pages.Auth;
+using ISIP323_Gusakov_WPF.Pages.Manager;
+using ISIP323_Gusakov_WPF.Pages.Master;
+using ISIP323_Gusakov_WPF.Pages.Shop;
+
 
 namespace ISIP323_Gusakov_WPF
 {
@@ -23,6 +30,137 @@ namespace ISIP323_Gusakov_WPF
         public MainWindow()
         {
             InitializeComponent();
+
+            MainFrame.Navigate(new Pages.Salon.StartPage());
+
+            CheckRolePermissions();
+
+        }
+
+        private void Navigating(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is string command)
+            {
+                // Используем явное создание страниц с учетом наших новых папок
+                switch (command)
+                {
+                    case "Start":
+                        MainFrame.Navigate(new Pages.Salon.StartPage());
+                        break;
+                    case "Shop":
+                        MainFrame.Navigate(new Pages.Shop.ProductsPage());
+                        break;
+                    case "Cart":
+                        MainFrame.Navigate(new Pages.Shop.CartPage());
+                        break;
+                    case "Account":
+                        MainFrame.Navigate(new Pages.Auth.AccountPage());
+                        break;
+                    case "Master":
+                        MainFrame.Navigate(new Pages.Master.SchedulePage());
+                        break;
+                    case "Manager":
+                        MainFrame.Navigate(new Pages.Manager.ManagerPage());
+                        break;
+                    case "Admin":
+                        MainFrame.Navigate(new Pages.Admin.AdminPage());
+                        break;
+                }
+            }
+        }
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+            {
+                MainFrame.GoBack();
+            }
+        }
+
+        // Управляем видимостью кнопки "Назад" и обновляем заголовок
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            BtnBack.Visibility = MainFrame.CanGoBack ? Visibility.Visible : Visibility.Hidden;
+
+            if (MainFrame.Content is Page page)
+            {
+                TxtPageTitle.Text = page.Title;
+                CheckRolePermissions();
+            }
+        }
+
+        // Проверка ролей 
+        public void CheckRolePermissions()
+        {
+            // Сбрасываем видимость всех доп. кнопок меню
+            BtnMyRecords.Visibility = Visibility.Collapsed;
+            BtnMasterRecords.Visibility = Visibility.Collapsed;
+            BtnManagerPanel.Visibility = Visibility.Collapsed;
+            BtnAdminPanel.Visibility = Visibility.Collapsed;
+
+            if (Core.AuthUser == null)
+            {
+                // СОСТОЯНИЕ: ГОСТЬ
+                TxtCurrentUser.Text = "Вы вошли как: Гость";
+                BtnLogin.Content = "Войти в аккаунт";
+                BtnLogin.Background = new SolidColorBrush(Color.FromRgb(230, 126, 34)); // Оранжевый #E67E22
+                BtnLogin.Visibility = Visibility.Visible;
+                BtnCart.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                // СОСТОЯНИЕ: АВТОРИЗОВАН
+                TxtCurrentUser.Text = $"Пользователь: {Core.AuthUser.FullName}";
+                TxtUserRole.Text = Core.AuthUser.Roles.Name;
+                BtnLogin.Content = "Выйти из аккаунта";
+                BtnLogin.Background = new SolidColorBrush(Color.FromRgb(231, 76, 60)); // Красный #E74C3C
+                BtnLogin.Visibility = Visibility.Visible;
+                BtnCart.Visibility = Visibility.Visible;
+
+                // Включаем кнопки по ролям из ТЗ
+                string role = Core.AuthUser.Roles.Name;
+                switch (role)
+                {
+                    case "Клиент":
+                        BtnMyRecords.Visibility = Visibility.Visible;
+                        break;
+                    case "Мастер":
+                        BtnMasterRecords.Visibility = Visibility.Visible;
+                        break;
+                    case "Менеджер":
+                        BtnManagerPanel.Visibility = Visibility.Visible;
+                        break;
+                    case "Администратор":
+                        BtnAdminPanel.Visibility = Visibility.Visible;
+                        break;
+                }
+            }
+        }
+
+        // Обработка кнопки Входа / Выхода
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (Core.AuthUser == null)
+            {
+                // Если не в сети -> идем на страницу авторизации
+                MainFrame.Navigate(new Pages.Auth.LoginPage());
+            }
+            else
+            {
+                // Если в сети -> выходим
+                MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите выйти?", "Выход", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Core.AuthUser = null; // Очищаем сессию
+                    CheckRolePermissions(); // Обновляем меню
+                    TxtUserRole.Text = string.Empty;
+                    // Очищаем историю фрейма, чтобы нельзя было нажать "Назад" в закрытый профиль
+                    while (MainFrame.CanGoBack) { MainFrame.RemoveBackEntry(); }
+
+                    // Перекидываем на главную
+                    MainFrame.Navigate(new Pages.Salon.StartPage());
+                }
+            }
         }
     }
 }

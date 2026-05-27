@@ -23,7 +23,7 @@ namespace ISIP323_Gusakov_WPF
         public int ID { get; set; }
         public int ClientID { get; set; }
         public System.DateTime OrderDate { get; set; }
-        public Nullable<System.DateTime> DeliveryDate { get; set; }
+        public System.DateTime DeliveryDate { get; set; }
         public string PaymentMethod { get; set; }
         public string Status { get; set; }
     

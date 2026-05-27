@@ -13,10 +13,10 @@ namespace ISIP323_Gusakov_WPF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MAGAZ_CosmosEntities : DbContext
+    public partial class MAGAZ_CosmosEntities1 : DbContext
     {
-        public MAGAZ_CosmosEntities()
-            : base("name=MAGAZ_CosmosEntities")
+        public MAGAZ_CosmosEntities1()
+            : base("name=MAGAZ_CosmosEntities1")
         {
         }
     
@@ -27,7 +27,6 @@ namespace ISIP323_Gusakov_WPF
     
         public virtual DbSet<Appointments> Appointments { get; set; }
         public virtual DbSet<Manufacturers> Manufacturers { get; set; }
-        public virtual DbSet<OrderItems> OrderItems { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<ProductTypes> ProductTypes { get; set; }
@@ -36,5 +35,6 @@ namespace ISIP323_Gusakov_WPF
         public virtual DbSet<ServiceTypes> ServiceTypes { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<OrderItems> OrderItems { get; set; }
     }
 }

@@ -1,0 +1,117 @@
+﻿<Page x:Class="ISIP323_Gusakov_WPF.Pages.Shop.ProductsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ISIP323_Gusakov_WPF.Pages.Shop"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Магазин товаров">
+
+    <Grid Background="#F8F9FA">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="White" BorderBrush="#DEE2E6" BorderThickness="0,0,0,1" Padding="10">
+            <WrapPanel Orientation="Horizontal">
+                <StackPanel Margin="10,0">
+                    <TextBlock Text="Поиск:" FontSize="11" Foreground="Gray"/>
+                    <TextBox x:Name="TbxSearch" Width="180" Height="25" TextChanged="FilterChanged"/>
+                </StackPanel>
+
+                <StackPanel Margin="10,0">
+                    <TextBlock Text="Тип товара:" FontSize="11" Foreground="Gray"/>
+                    <ComboBox x:Name="ComboType" Width="150" Height="25" DisplayMemberPath="Name" SelectionChanged="FilterChanged"/>
+                </StackPanel>
+
+                <StackPanel Margin="10,0">
+                    <TextBlock Text="Производитель:" FontSize="11" Foreground="Gray"/>
+                    <ComboBox x:Name="ComboManufacturer" Width="150" Height="25" DisplayMemberPath="Name" SelectionChanged="FilterChanged"/>
+                </StackPanel>
+
+                <StackPanel Margin="10,0">
+                    <TextBlock Text="Сортировка:" FontSize="11" Foreground="Gray"/>
+                    <ComboBox x:Name="ComboSort" Width="150" Height="25" SelectionChanged="FilterChanged">
+                        <ComboBoxItem Content="По умолчанию"/>
+                        <ComboBoxItem Content="Сначала дешевые"/>
+                        <ComboBoxItem Content="Сначала дорогие"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <TextBlock x:Name="TxtCount" VerticalAlignment="Bottom" Margin="10,0,0,5" Foreground="Gray" FontSize="11"/>
+            </WrapPanel>
+        </Border>
+
+        <ListBox x:Name="LBoxProducts" Grid.Row="1" 
+         d:ItemsSource="{d:SampleData ItemCount=6}"
+         MouseDoubleClick="LBoxProducts_MouseDoubleClick"
+         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+         BorderThickness="0" Background="Transparent" Padding="10">
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border x:Name="ProductBorder" Background="#580EAD" BorderBrush="#DEE2E6" 
+                    BorderThickness="1" CornerRadius="10" Margin="10" Padding="15" 
+                    Width="280" MinHeight="170">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+
+                            <TextBlock Grid.Row="0" Text="{Binding Name}" FontSize="15" FontWeight="Bold" Foreground="White"
+                               TextWrapping="Wrap" Margin="0,0,0,5"/>
+
+                            <TextBlock Grid.Row="1" Text="{Binding Manufacturers.Name}" FontSize="12" Foreground="White"/>
+
+                            <StackPanel Grid.Row="2">
+                                <Separator Background="#F1F3F5" Margin="0,10"/>
+
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,10">
+                                    <TextBlock Text="{Binding Price, StringFormat={}{0:N0} ₽}" FontSize="18" 
+                                       FontWeight="SemiBold" Foreground="White"/>
+
+                                    <Border x:Name="DiscountLabel" Background="#FFF0F0" CornerRadius="4" Margin="8,0,0,0" Padding="4,2">
+                                        <TextBlock Text="{Binding DiscountPercentage, StringFormat=-{0}%}" 
+                                           Foreground="#E74C3C" FontWeight="Bold" FontSize="12"/>
+                                    </Border>
+                                </StackPanel>
+
+                                <Button Content="В корзину" Height="35" Background="#E67E22" Foreground="White" 
+                                BorderThickness="0" Click="BtnAddToCart_Click" Tag="{Binding}" >
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsHighDiscount}" Value="True">
+                            <Setter TargetName="ProductBorder" Property="Background" Value="#3a61d4"/>
+                            <Setter TargetName="ProductBorder" Property="BorderBrush" Value="#C8E6C9"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding DiscountPercentage}" Value="0">
+                            <Setter TargetName="DiscountLabel" Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>

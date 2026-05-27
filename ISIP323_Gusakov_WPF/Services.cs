@@ -18,6 +18,7 @@ namespace ISIP323_Gusakov_WPF
         public Services()
         {
             this.Appointments = new HashSet<Appointments>();
+            this.Users = new HashSet<Users>();
         }
     
         public int ID { get; set; }
@@ -28,5 +29,7 @@ namespace ISIP323_Gusakov_WPF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointments> Appointments { get; set; }
         public virtual ServiceTypes ServiceTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users> Users { get; set; }
     }
 }
